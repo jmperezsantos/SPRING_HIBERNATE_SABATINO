@@ -47,4 +47,16 @@ public class UserDummyService implements IUserService {
 		return userRepository.delete(user);
 	}
 
+	@Override
+	public UserModel findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserModel findByNameContaining(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

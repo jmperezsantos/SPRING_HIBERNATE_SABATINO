@@ -58,13 +58,28 @@ public class UserRealService implements IUserService {
 	public boolean delete(UserModel user) {
 
 		repository.delete(user);
-		
+
 		return true;
 	}
 
+	@Override
+	public UserModel findByName(String name) {
+
+		UserModel user = repository.findByName(name);
+
+		return user;
+	}
+
+	@Override
+	public UserModel findByNameContaining(String name) {
+		
+		UserModel user = repository.findByNameContains(name);
+		//UserModel user = repository.findByNameLike(name);
+
+		return user;
+		
+	}
+	
+	
+
 }
-
-
-
-
-

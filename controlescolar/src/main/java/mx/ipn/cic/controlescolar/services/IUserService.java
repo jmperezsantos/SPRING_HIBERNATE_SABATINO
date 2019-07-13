@@ -14,4 +14,14 @@ public interface IUserService {
 	
 	boolean delete (UserModel user); 
 	
+	UserModel findByName(String name);
+	
+	UserModel findByNameContaining(String name);
 }
+
+
+
+
+
+
+

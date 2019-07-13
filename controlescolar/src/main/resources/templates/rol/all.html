@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaft.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Aqui deben ir los roles</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each= "rol : ${roles}">
+				<td th:text = "${rol.id}"></td>
+				<td th:text = "${rol.name}"></td>
+				<td th:text = "${rol.description}"></td>
+				<td>
+					<a th:href="@{'/rol/editForm/' + ${rol.id}}">
+						<button>Editar</button>
+					</a>
+				</td>
+				<td>
+					<a th:href="@{|/rol/delete/${rol.id}|}">
+						<button>Borrar</button>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table>
+</body>
+</html>

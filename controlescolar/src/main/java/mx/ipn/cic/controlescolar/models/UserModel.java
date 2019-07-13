@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -41,6 +43,10 @@ public class UserModel implements Serializable {
 	@Max(value = 70)
 	@Column(name = "edad")
 	private int age;
+
+	@ManyToOne
+	@JoinColumn(name = "rol_id", referencedColumnName = "id")
+	private RolModel rol;
 
 	public Integer getId() {
 		return id;
@@ -82,6 +88,14 @@ public class UserModel implements Serializable {
 		this.age = age;
 	}
 
+	public RolModel getRol() {
+		return rol;
+	}
+
+	public void setRol(RolModel rol) {
+		this.rol = rol;
+	}
+
 	public UserModel() {
 		super();
 
@@ -109,8 +123,8 @@ public class UserModel implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("UserModel [id=%s, name=%s, lastname=%s, surname=%s, age=%s]", id, name, lastname, surname,
-				age);
+		return String.format("UserModel [id=%s, name=%s, lastname=%s, surname=%s, age=%s, rol=%s]", id, name, lastname, surname,
+				age, rol);
 	}
 
 }

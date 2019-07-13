@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ch.qos.logback.classic.Logger;
 import mx.ipn.cic.controlescolar.models.UserModel;
 import mx.ipn.cic.controlescolar.services.IUserService;
 
@@ -27,17 +25,15 @@ import mx.ipn.cic.controlescolar.services.IUserService;
 @RequestMapping(path = "/user")
 public class UserController {
 
-	private static final Log LOOGGER = LogFactory.getLog(UserController.class);
+	private static final Log LOOGGER = LogFactory.getLog(RolController.class);
 
 	@Autowired
 	@Qualifier("REAL")
 	private IUserService userService;
 
-	// @RequestMapping(path = "/all", method = RequestMethod.POST) // esta manera es
-	// igual que la anterior (lo mismo)
 	@GetMapping(path = "/all")
 	public ModelAndView findAll() {
-	
+
 		ModelAndView mav = new ModelAndView("users/allUsers");
 		List<UserModel> users = userService.findAll();
 
@@ -46,7 +42,7 @@ public class UserController {
 
 		// Se regresa el html (template)
 		return mav;
-		
+
 	}
 
 	@GetMapping(path = "/newUserForm")
@@ -115,8 +111,9 @@ public class UserController {
 	@GetMapping(path = "/newUserFormThymeleaf")
 	public ModelAndView getNewUserFormThymeleaf() {
 
-		ModelAndView mav = new ModelAndView("users/new_user_form_thymeleaf");// cuando son recursos la notacion es la siguiente
-																	// todo en minusculas y palabras ceparadas con_
+		ModelAndView mav = new ModelAndView("users/new_user_form_thymeleaf");// cuando son recursos la notacion es la
+																				// siguiente
+		// todo en minusculas y palabras ceparadas con_
 
 		mav.addObject("user", new UserModel());
 
@@ -132,22 +129,21 @@ public class UserController {
 
 		return "redirect:/user/all";
 	}
-	
+
 	@GetMapping(path = "/editForm/{id}")
-	public ModelAndView updateUser(@PathVariable("id") int id){
-		
+	public ModelAndView updateUser(@PathVariable("id") int id) {
+
 		UserModel user = this.userService.findById(id);
-		
+
 		ModelAndView mav = new ModelAndView("users/edit_user_form_thymeleaf");
-		
+
 		mav.addObject("user", user);
-		
+
 		return mav;
 	}
-	
+
 	@PostMapping(path = "/updateUser")
-	public String updateUser(
-			@ModelAttribute(name = "user") UserModel user) {
+	public String updateUser(@ModelAttribute(name = "user") UserModel user) {
 
 		userService.update(user);
 
@@ -155,19 +151,31 @@ public class UserController {
 
 		return "redirect:/user/all";
 	}
-	
-	@GetMapping(path="/delete/{id}")
-	public String deleteUser (@PathVariable("id")int id) {
-		
+
+	@GetMapping(path = "/delete/{id}")
+	public String deleteUser(@PathVariable("id") int id) {
+
 		UserModel user = this.userService.findById(id);
-		
+
 		userService.delete(user);
-		
-		return "redirect:/user/all";		
-		
+
+		return "redirect:/user/all";
+
+	}
+
+	@GetMapping(path = "/find/{name}")
+	public String findByName(@PathVariable("name") String name) {
+
+		UserModel user = this.userService.findByName(name);
+
+		LOOGGER.info(user);
+
+		UserModel user2 = this.userService.findByNameContaining(name);
+
+		LOOGGER.info(user2);
+
+		return "redirect:/user/all";
+
 	}
 
 }
-
-
-
