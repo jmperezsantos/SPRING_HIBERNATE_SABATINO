@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Editar Rol</title>
+</head>
+<body>
+	
+	<form action="#" method="post" th:action="@{/rol/updateRol}" th:object="${rol}">
+		
+		<input type="text" th:field="*{id}" hidden="true"/>
+		
+		<input type="text" placeholder="Nombre:" th:field="*{name}"/>
+		<br>
+		<input type="text" placeholder="Descripción:" th:field="*{description}"/>
+		<br>
+		<input type="submit"/>
+		
+	</form>
+	
+</body>
+</html>

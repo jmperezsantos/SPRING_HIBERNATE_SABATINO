@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<form action="#" method="post" th:action="@{/rol/newRol}" th:object="${rol}">
+		
+		<input type="text" placeholder="Nombre:" th:field="*{name}"/>
+		<br>
+		<input type="text" placeholder="Description" th:field="*{description}"/>
+		<br>
+		<input type="submit"/>
+		
+	</form>
+	
+</body>
+</html>

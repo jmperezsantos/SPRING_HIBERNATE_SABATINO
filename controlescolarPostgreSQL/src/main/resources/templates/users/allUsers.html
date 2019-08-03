@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaft.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Aqui deben ir los usuario</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Paterno</th>
+				<th>Materno</th>
+				<th>Edad</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each= "user: ${userList}">
+				<td th:text = "${user.id}"></td>
+				<td th:text = "${user.name}"></td>
+				<td th:text = "${user.lastname}"></td>
+				<td th:text = "${user.surname}"></td>
+				<td th:text = "${user.age}"></td>
+				<td>
+					<a th:href="@{'/user/editForm/' + ${user.id}}">
+						<button>Editar</button>
+					</a>
+				</td>
+				<td>
+					<a th:href="@{|/user/delete/${user.id}|}">
+						<button>Borrar</button>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table>
+</body>
+</html>
