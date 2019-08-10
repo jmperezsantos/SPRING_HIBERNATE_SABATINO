@@ -28,7 +28,11 @@ public class UserRealService implements IUserService {
 	}
 
 	@Override
-	public UserModel update(UserModel user) {
+	public UserModel update(UserModel user) throws CICException {
+
+		if(user.getAge() >= 50){
+			throw  new CICException("Se ha superado la edad límite");
+		}
 
 		user = repository.save(user);
 
