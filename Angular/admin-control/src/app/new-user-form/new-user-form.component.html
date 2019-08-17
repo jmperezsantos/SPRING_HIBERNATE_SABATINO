@@ -1,0 +1,31 @@
+
+<h1>
+    Nuevo Usuario
+</h1>
+
+<div>
+
+    <input [(ngModel)]="user.name" placeholder="Nombre:">
+    <br>
+    <input [(ngModel)]="user.lastname" placeholder="Apellido Paterno:">
+    <br>
+    <input [(ngModel)]="user.surname" placeholder="Apellido Materno:">
+    <br>
+    <input [(ngModel)]="user.age" type="number" placeholder="Edad:">
+    <br>
+    <button (click)="performClickAction()">Registrar</button>
+
+    <h3>En Angular todo es un "observable"</h3>
+<p>
+
+    {{ user.name }}
+
+</p>
+
+<p>
+
+    {{ user.lastname }}
+
+</p>
+
+</div>
