@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/rest/user")
+@CrossOrigin
 public class UserRestController {
 
     private static final Log LOOGGER =

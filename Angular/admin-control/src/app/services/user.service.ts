@@ -32,9 +32,7 @@ export class UserService {
 
     //Registrar un usuario por WS
     var myHeaders = {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin":"*",
-      "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept"
+      "Content-Type": "application/json"
     }
 
     this.httpClient.post(
