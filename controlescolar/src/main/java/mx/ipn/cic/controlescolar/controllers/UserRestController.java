@@ -30,7 +30,7 @@ public class UserRestController {
     private IUserService userService;
 
     @GetMapping()
-    public ResponseEntity<List<UserModel>> getAll() {
+    public ResponseEntity<List<UserModel>> getAll() throws InterruptedException {
 
         List<UserModel> all = userService.findAll();
 

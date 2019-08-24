@@ -19,7 +19,6 @@ export class NewUserFormComponent implements OnInit {
     this.userService = userService;
 
     this.user = new UserModel();
-    this.user.name = "manuel";
 
   }
 
